@@ -30,7 +30,7 @@ public class Note {
         this.id = id;
     }
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "notes")
     public Set<Product> getProducts() {
         return products;
     }

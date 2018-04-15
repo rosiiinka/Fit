@@ -45,7 +45,7 @@ public class Product {
         this.calories = calories;
     }
 
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "products")
+    @ManyToMany(fetch = FetchType.EAGER)
     public Set<Note> getNotes() {
         return notes;
     }
