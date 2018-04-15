@@ -30,7 +30,7 @@ public class Note {
         this.id = id;
     }
 
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "products")
+    @ManyToMany(fetch = FetchType.EAGER)
     public Set<Product> getProducts() {
         return products;
     }
@@ -47,7 +47,7 @@ public class Note {
         this.quantity = quantity;
     }
 
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "users")
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "notes")
     public Set<User> getUsers() {
         return users;
     }
