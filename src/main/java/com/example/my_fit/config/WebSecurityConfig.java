@@ -32,5 +32,28 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .userDetailsService(this.userDetailsService);
 
+
+        //                .antMatchers("/", "/login", "/register").permitAll()
+//                .anyRequest().authenticated()
+//                .and()
+//                .csrf().disable()
+//                .formLogin()
+//                .loginPage("/login").permitAll()
+//                .loginProcessingUrl("/login")
+//                .usernameParameter("username")
+//                .passwordParameter("password")
+//                .defaultSuccessUrl("/home")
+//                .failureUrl("/error")
+//                .and()
+//                .rememberMe()
+//                .rememberMeParameter("remember")
+//                .rememberMeCookieName("rememberMeCookie")
+//                .key("48433e39-e610-4a2c-926c-f86d46f5360a")
+//                .tokenValiditySeconds(100)
+//                .userDetailsService(userDetailsService)
+//                .and()
+//                .logout().logoutUrl("/logout")
+//                .logoutSuccessUrl("/login")
+//                .permitAll();
     }
 }
