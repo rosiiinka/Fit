@@ -9,7 +9,7 @@ public class Product {
 
     private Long id;
 
-    private String product;
+    private String name;
 
     private String calories;
 
@@ -29,12 +29,12 @@ public class Product {
         this.id = id;
     }
 
-    public String getProduct() {
-        return product;
+    public String getName() {
+        return name;
     }
 
-    public void setProduct(String product) {
-        this.product = product;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getCalories() {
