@@ -1,7 +1,9 @@
 package com.example.my_fit.services.user;
 
+import com.example.my_fit.model.entity.Role;
 import com.example.my_fit.model.entity.User;
 import com.example.my_fit.model.view.UserRegisterRequestModel;
+import com.example.my_fit.repositories.RoleRepository;
 import com.example.my_fit.repositories.UserRepository;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -21,10 +23,12 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final RoleRepository roleRepository;
 
-    public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+    public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder, RoleRepository roleRepository) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
+        this.roleRepository = roleRepository;
     }
 
     @Override
@@ -35,14 +39,13 @@ public class UserServiceImpl implements UserService, UserDetailsService {
                 this.passwordEncoder.encode(model.getPassword())
         );
 
-//        Role role = this.roleRepository.findFirstByName("USER");
-//        role.getUsers().add(user);
-//        user.getRoles().add(role);
-//
-//        this.roleRepository.save(role);
+        Role role = this.roleRepository.findFirstByName("USER");
+        role.getUsers().add(user);
+        user.getRoles().add(role);
+
+        this.roleRepository.save(role);
         return this.userRepository.save(user);
     }
-
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

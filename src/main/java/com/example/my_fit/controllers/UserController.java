@@ -29,7 +29,6 @@ public class UserController {
         return new ModelAndView("redirect:/login");
     }
 
-
     @GetMapping("/users/profile")
     @PreAuthorize("isAuthenticated()")
     public ModelAndView profile() {
