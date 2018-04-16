@@ -3,7 +3,6 @@ package com.example.my_fit.model.view;
 public class ModeCreateRequestModel {
 
     private String title;
-
     private String description;
 
     public String getTitle() {

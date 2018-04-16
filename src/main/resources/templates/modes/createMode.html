@@ -2,12 +2,14 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Create Mode</title>
-    <link rel="stylesheet" href="../../static/styles/bootstrap.css">
+    <!--<meta charset="UTF-8">-->
+    <!--<title>Create Mode</title>-->
+    <!--<link rel="stylesheet" href="/styles/bootstrap.css">-->
+    <th:block th:replace="fragments/head"></th:block>
 </head>
 <body>
 <div class="container ">
+    <th:block th:replace="fragments/navbar"></th:block>
     <form method="post">
         <fieldset>
             <legend class="text-center">Create Mode</legend>
@@ -29,6 +31,6 @@
         </fieldset>
     </form>
 </div>
-
+<th:block th:replace="fragments/footer"></th:block>
 </body>
 </html>

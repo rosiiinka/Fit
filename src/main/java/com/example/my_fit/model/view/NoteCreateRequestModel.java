@@ -1,15 +1,19 @@
 package com.example.my_fit.model.view;
 
+import com.example.my_fit.model.entity.Product;
+
+import java.util.Set;
+
 public class NoteCreateRequestModel {
-    private String product;
+    private Set<Product> product;
 
     private Integer quantity;
 
-    public String getProduct() {
+    public Set<Product> getProduct() {
         return product;
     }
 
-    public void setProduct(String product) {
+    public void setProduct(Set<Product> product) {
         this.product = product;
     }
 

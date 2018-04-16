@@ -10,42 +10,36 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item disabled">
-                    <a class="nav-link nav-link-black" href="/home">Home</a>
+                    <a class="nav-link nav-link-black" href="/">Home</a>
+                </li>
+                <li class="nav-item disabled">
+                    <a class="nav-link nav-link-black" href="/contacts">Register</a>
                 </li>
                 <li class="nav-item disabled">
                     <a class="nav-link nav-link-black" href="/login">Login</a>
                 </li>
                 <li class="nav-item disabled">
-                    <a class="nav-link nav-link-black" href="/register">Register</a>
+                    <a class="nav-link nav-link-black" href="/users/register">Register</a>
                 </li>
+                <li sec:authorize="isAuthenticated()" class="nav-item disabled">
+                    <a class="nav-link nav-link-black" href="/modes/modes">Modes</a>
+                </li>
+                <li sec:authorize="isAuthenticated()" class="nav-item disabled">
+                    <a class="nav-link nav-link-black" href="/modes/create_mode">Create Mode</a>
+                </li>
+                <li sec:authorize="isAuthenticated()" class="nav-item disabled">
+                    <a class="nav-link nav-link-black" href="/notes/product">Create Product</a>
+                </li>
+                <li sec:authorize="isAuthenticated()" class="nav-item disabled">
+                    <a class="nav-link nav-link-black" href="/notes/note">Note</a>
+                </li>
+                <li sec:authorize="isAuthenticated()" class="nav-item disabled">
+                    <a class="nav-link nav-link-black" href="/users/profile">Profile</a>
+                </li>
+
                 <li sec:authorize="isAuthenticated()" class="nav-item disabled">
                     <form th:action="@{/logout}" th:method="POST">
                         <button type="submit" class="nav-link nav-link-black">Logout</button>
-                    </form>
-                </li>
-                <li sec:authorize="isAuthenticated()" class="nav-item disabled">
-                    <form th:action="@{/modes}" th:method="POST">
-                        <button type="submit" class="nav-link nav-link-black">Modes</button>
-                    </form>
-                </li>
-                <li sec:authorize="isAuthenticated()" class="nav-item disabled">
-                    <form th:action="@{/notes}" th:method="POST">
-                        <button type="submit" class="nav-link nav-link-black">Notes</button>
-                    </form>
-                </li>
-                <li sec:authorize="isAuthenticated()" class="nav-item disabled">
-                    <form th:action="@{/profile}" th:method="POST">
-                        <button type="submit" class="nav-link nav-link-black">Profile</button>
-                    </form>
-                </li>
-                <li sec:authorize="isAuthenticated()" class="nav-item disabled">
-                    <form th:action="@{/modes/create}" th:method="POST">
-                        <button type="submit" class="nav-link nav-link-black">Create Mode</button>
-                    </form>
-                </li>
-                <li sec:authorize="isAuthenticated()" class="nav-item disabled">
-                    <form th:action="@{/notes/create_calories}" th:method="POST">
-                        <button type="submit" class="nav-link nav-link-black">Create Calories</button>
                     </form>
                 </li>
             </ul>

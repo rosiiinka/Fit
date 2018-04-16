@@ -11,7 +11,7 @@ public class Product {
 
     private String name;
 
-    private String calories;
+    private Integer calories;
 
     private Set<Note> notes;
 
@@ -37,11 +37,11 @@ public class Product {
         this.name = name;
     }
 
-    public String getCalories() {
+    public Integer getCalories() {
         return calories;
     }
 
-    public void setCalories(String calories) {
+    public void setCalories(Integer calories) {
         this.calories = calories;
     }
 

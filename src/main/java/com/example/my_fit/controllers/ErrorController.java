@@ -5,12 +5,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class HomeController {
+public class ErrorController {
 
-    @GetMapping("/")
+    @GetMapping("/error")
     public ModelAndView index() {
-        return new ModelAndView("home/home.html");
+        return new ModelAndView("error/error.html");
     }
-
-
 }
