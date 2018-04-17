@@ -23,7 +23,7 @@ public class NoteServiceImlp implements NoteService {
     @Override
     public Note createNote(NoteCreateRequestModel model) {
         Note note = new Note();
-        note.setProducts(model.getProduct());
+        note.setProduct(model.getProduct());
         note.setQuantity(model.getQuantity());
 
 //        Product product = (Product) this.productRepository.findAllByNameAndCalories("");

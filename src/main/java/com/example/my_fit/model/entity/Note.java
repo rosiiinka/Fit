@@ -9,14 +9,13 @@ public class Note {
 
     private Long id;
 
-    private Set<Product> products;
+    private String product;
 
     private Integer quantity;
 
     private Set<User> users;
 
     public Note() {
-        this.products = new HashSet<>();
         this.users = new HashSet<>();
     }
 
@@ -30,13 +29,12 @@ public class Note {
         this.id = id;
     }
 
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "notes")
-    public Set<Product> getProducts() {
-        return products;
+    public String getProduct() {
+        return product;
     }
 
-    public void setProducts(Set<Product> products) {
-        this.products = products;
+    public void setProduct(String product) {
+        this.product = product;
     }
 
     public Integer getQuantity() {

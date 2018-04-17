@@ -1,8 +1,9 @@
 package com.example.my_fit.model.entity;
 
-import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
 public class Product {
@@ -12,12 +13,6 @@ public class Product {
     private String name;
 
     private Integer calories;
-
-    private Set<Note> notes;
-
-    public Product() {
-        this.notes = new HashSet<>();
-    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -43,14 +38,5 @@ public class Product {
 
     public void setCalories(Integer calories) {
         this.calories = calories;
-    }
-
-    @ManyToMany(fetch = FetchType.EAGER)
-    public Set<Note> getNotes() {
-        return notes;
-    }
-
-    public void setNotes(Set<Note> notes) {
-        this.notes = notes;
     }
 }
