@@ -18,8 +18,12 @@ public class ModeController {
 
     @GetMapping("/modes/modes")
 //    @PreAuthorize("hasRole('USER')")
-    public ModelAndView modes() {
-        return new ModelAndView("modes/modes.html");
+    public ModelAndView modes( ModelAndView modelAndView) {
+        modelAndView.setViewName("modes/modes");
+
+        modelAndView.addObject("modes", this.modeService.getAllModes());
+
+        return modelAndView;
     }
 
     @GetMapping("/modes/mode/(id)")
@@ -40,5 +44,6 @@ public class ModeController {
 
         return new ModelAndView("redirect:/modes/modes");
     }
+
 
 }

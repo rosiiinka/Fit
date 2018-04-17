@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <!--<meta charset="UTF-8">-->
     <!--<title>Calories Calculator</title>-->
@@ -17,8 +20,9 @@
                 <label for="product" class="col-sm-3 col-form-label right">Product</label>
                 <div class="col-sm-9">
                     <select class="form-control" id="product" name="product" type="text">
-                        <option value="0"></option>
-                        <option value="1">one</option>
+                        <th:block th:each="product : ${products}" th:object="${product}">
+                            <option th:attr="value=*{id}" th:text="*{name}"></option>
+                        </th:block>
                     </select>
                 </div>
             </div>

@@ -10,21 +10,12 @@
 <body>
 <div class="container ">
     <th:block th:replace="fragments/navbar"></th:block>
-    <div >
-        title
-    </div>
-    <div >
-        description
-    </div>
-    <button class="btn btn-warning">Read more...</button>
-    <hr/>
-    <div >
-        title
-    </div>
-    <div >
-        description
-    </div>
-    <button class="btn btn-warning">Read more...</button>
+    <th:block th:each="mode : ${modes}" th:object="${modes}">
+        <h3 class="text-center" th:text="*{title}"></h3>
+        <h3 class="text-center" th:text="*{description}"></h3>
+        <button class="btn btn-warning">Read more...</button>
+    </th:block>
+
 </div>
 <th:block th:replace="fragments/footer"></th:block>
 </body>
