@@ -3,7 +3,6 @@ package com.example.my_fit.model.view;
 public class ProductCreateRequestModel {
 
     private String name;
-
     private Integer calories;
 
     public String getName() {
