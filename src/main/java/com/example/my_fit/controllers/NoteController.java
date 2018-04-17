@@ -27,11 +27,11 @@ public class NoteController{
         return new ModelAndView("/notes/note.html");
     }
 
-    @PostMapping("/notes/product")
+    @PostMapping("/notes/note")
     public ModelAndView createNote(NoteCreateRequestModel model) {
         this.noteService.createNote(model);
 
-        return new ModelAndView("redirect:/product");
+        return new ModelAndView("redirect:/notes/note");
     }
 
     @GetMapping("/notes/product")
@@ -44,6 +44,6 @@ public class NoteController{
     public ModelAndView createProduct(ProductCreateRequestModel model) {
         this.productService.createProduct(model);
 
-        return new ModelAndView("redirect:/product");
+        return new ModelAndView("redirect:/notes/product");
     }
 }

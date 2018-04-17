@@ -3,7 +3,12 @@ package com.example.my_fit.services.product;
 import com.example.my_fit.model.entity.Product;
 import com.example.my_fit.model.view.ProductCreateRequestModel;
 import com.example.my_fit.repositories.ProductRepository;
+import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+
+@Service
+@Transactional
 public class ProductServiceImpl implements ProductService{
     private final ProductRepository productRepository;
 

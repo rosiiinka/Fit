@@ -10,7 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class ModeController {
 
-   private final ModeService modeService;
+    private final ModeService modeService;
 
     public ModeController(ModeService modeService) {
         this.modeService = modeService;
@@ -38,7 +38,7 @@ public class ModeController {
     public ModelAndView createMode(ModeCreateRequestModel model) {
         this.modeService.createMode(model);
 
-        return new ModelAndView("redirect:/modes");
+        return new ModelAndView("redirect:/modes/modes");
     }
 
 }

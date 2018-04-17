@@ -6,7 +6,9 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class UserController {
@@ -34,4 +36,14 @@ public class UserController {
     public ModelAndView profile() {
         return new ModelAndView("/users/profile.html");
     }
+
+    @PostMapping("/logout")
+    public ModelAndView logout(@RequestParam(required = false, name = "logout") String logout, ModelAndView modelAndView, RedirectAttributes redirectAttributes) {
+        modelAndView.setViewName("redirect:/login");
+
+        if(logout != null) redirectAttributes.addFlashAttribute("logout", logout);
+
+        return modelAndView;
+    }
+
 }

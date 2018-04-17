@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
-    Product findFirstByName (String name);
+    Product findAllByNameAndCalories(String name, Integer calories);
 }
