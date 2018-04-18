@@ -10,10 +10,10 @@
 <body>
 <div class="container ">
     <th:block th:replace="fragments/navbar"></th:block>
-    <th:block th:each="mode : ${modes}" th:object="${modes}">
+    <th:block th:each="mode : ${modes}" th:object="${mode}">
         <h3 class="text-center" th:text="*{title}"></h3>
         <h3 class="text-center" th:text="*{description}"></h3>
-        <button class="btn btn-warning">Read more...</button>
+        <button class="btn btn-warning"><a href="/modes/mode/*{id}">Read more...</a></button>
     </th:block>
 
 </div>

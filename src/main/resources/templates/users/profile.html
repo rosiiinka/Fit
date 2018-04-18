@@ -13,6 +13,12 @@
     <div >
         <img src="../../static/photos/Me-Myself-and-I.png" height="378" width="378"/>
     </div>
+    <div  class="container-fluid">
+        <th:block th:each="note : ${notes}" th:object="${note}">
+            <h3 class="text-center" th:text="*{product}"></h3>
+            <h3 class="text-center" th:text="*{quantity}"></h3>
+        </th:block>
+    </div>
 </div>
 <th:block th:replace="fragments/footer"></th:block>
 </body>

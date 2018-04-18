@@ -2,6 +2,7 @@ package com.example.my_fit.controllers;
 
 import com.example.my_fit.model.view.NoteCreateRequestModel;
 import com.example.my_fit.services.note.NoteService;
+import com.example.my_fit.services.product.ProductService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,17 +15,25 @@ public class NoteController{
 
     private final NoteService noteService;
 
-    public NoteController( NoteService noteService) {
+    private final ProductService productService;
+
+    public NoteController(NoteService noteService, ProductService productService) {
         this.noteService = noteService;
+        this.productService = productService;
     }
 
-    @GetMapping("/notes/note")
+    @GetMapping("/notes")
 //    @PreAuthorize("isAuthenticated()")
-    public ModelAndView note() {
-        return new ModelAndView("/notes/note.html");
+    public ModelAndView note( ModelAndView modelAndView) {
+        modelAndView.setViewName("notes/note");
+
+        modelAndView.addObject("notes", this.noteService.getAllNotes());
+        modelAndView.addObject("products", this.productService.getAllProducts());
+
+        return modelAndView;
     }
 
-    @PostMapping("/notes/note")
+    @PostMapping("/notes")
     public ModelAndView createNote(NoteCreateRequestModel model) {
         this.noteService.createNote(model);
 

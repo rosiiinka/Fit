@@ -4,9 +4,12 @@ import com.example.my_fit.model.entity.Note;
 import com.example.my_fit.model.view.NoteCreateRequestModel;
 import com.example.my_fit.repositories.NoteRepository;
 import com.example.my_fit.repositories.ProductRepository;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -33,5 +36,17 @@ public class NoteServiceImlp implements NoteService {
 //        this.productRepository.save(product);
 
         return this.noteRepository.save(note);
+    }
+
+    @Override
+    public List<NoteCreateRequestModel> getAllNotes() {
+            ModelMapper modelMapper = new ModelMapper();
+
+            return this.noteRepository
+                    .findAll()
+                    .stream()
+                    .map(x -> modelMapper.map(x, NoteCreateRequestModel.class))
+                    .collect(Collectors.toList());
+
     }
 }

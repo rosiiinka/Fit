@@ -16,7 +16,7 @@ public class ModeController {
         this.modeService = modeService;
     }
 
-    @GetMapping("/modes/modes")
+    @GetMapping("/modes")
 //    @PreAuthorize("hasRole('USER')")
     public ModelAndView modes( ModelAndView modelAndView) {
         modelAndView.setViewName("modes/modes");

@@ -39,4 +39,5 @@ public class ModeServiceImpl implements ModeService {
                 .map(x -> modelMapper.map(x, ModeCreateRequestModel.class))
                 .collect(Collectors.toList());
     }
+
 }

@@ -16,16 +16,26 @@ public class ProductController {
         this.productService = productService;
     }
 
-    @GetMapping("/notes/product")
+    @GetMapping("/products/create_product")
 //    @PreAuthorize("hasRole('USER')")
     public ModelAndView createProduct() {
-        return new ModelAndView("/notes/product.html");
+        return new ModelAndView("/products/product.html");
     }
 
     @PostMapping("/notes/product")
     public ModelAndView createProduct(ProductCreateRequestModel model) {
         this.productService.createProduct(model);
 
-        return new ModelAndView("redirect:/notes/product");
+        return new ModelAndView("redirect:/products/product");
+    }
+
+    @GetMapping("/products")
+//    @PreAuthorize("isAuthenticated()")
+    public ModelAndView note( ModelAndView modelAndView) {
+        modelAndView.setViewName("products/products");
+
+        modelAndView.addObject("products", this.productService.getAllProducts());
+
+        return modelAndView;
     }
 }
