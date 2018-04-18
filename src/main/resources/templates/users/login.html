@@ -8,8 +8,8 @@
     <th:block th:replace="fragments/head"></th:block>
 </head>
 <body>
+<th:block th:replace="fragments/navbar"></th:block>
 <div class="jumbotron d-flex justify-content-center  ">
-    <th:block th:replace="fragments/navbar"></th:block>
     <h1 class="danger" th:text="${error}"></h1>
     <h1 class="success" th:text="${logout}"></h1>
     <form method="post">

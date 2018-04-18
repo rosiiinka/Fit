@@ -10,4 +10,6 @@ public interface ModeService {
     Mode createMode(ModeCreateRequestModel model);
 
     List<ModeCreateRequestModel> getAllModes();
+
+    ModeCreateRequestModel getById(Long id);
 }

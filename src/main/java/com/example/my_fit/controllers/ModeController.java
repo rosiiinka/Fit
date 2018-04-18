@@ -4,6 +4,7 @@ import com.example.my_fit.model.view.ModeCreateRequestModel;
 import com.example.my_fit.services.mode.ModeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -26,10 +27,15 @@ public class ModeController {
         return modelAndView;
     }
 
-    @GetMapping("/modes/mode/(id)")
+    @GetMapping("/modes/mode/{id}")
 //    @PreAuthorize("hasRole('USER')")
-    public ModelAndView mode() {
-        return new ModelAndView("modes/mode.html");
+    public ModelAndView mode( ModelAndView modelAndView, @PathVariable Long id) {
+        modelAndView.setViewName("modes/mode");
+
+        modelAndView.addObject("modes", this.modeService.getAllModes());
+        modelAndView.addObject("mode", this.modeService.getById(id));
+
+        return modelAndView;
     }
 
     @GetMapping("/modes/create_mode")
@@ -42,7 +48,7 @@ public class ModeController {
     public ModelAndView createMode(ModeCreateRequestModel model) {
         this.modeService.createMode(model);
 
-        return new ModelAndView("redirect:/modes/modes");
+        return new ModelAndView("redirect:/modes");
     }
 
 

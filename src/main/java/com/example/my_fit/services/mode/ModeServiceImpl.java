@@ -23,6 +23,7 @@ public class ModeServiceImpl implements ModeService {
     @Override
     public Mode createMode(ModeCreateRequestModel model) {
         Mode mode = new Mode();
+        mode.setId(model.getId());
         mode.setTitle(model.getTitle());
         mode.setDescription(model.getDescription());
 
@@ -38,6 +39,13 @@ public class ModeServiceImpl implements ModeService {
                 .stream()
                 .map(x -> modelMapper.map(x, ModeCreateRequestModel.class))
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public ModeCreateRequestModel getById(Long id) {
+        ModelMapper modelMapper = new ModelMapper();
+
+        return modelMapper.map(this.modeRepository.findById(id), ModeCreateRequestModel.class);
     }
 
 }

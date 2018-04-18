@@ -31,11 +31,48 @@ public class ProductController {
 
     @GetMapping("/products")
 //    @PreAuthorize("isAuthenticated()")
-    public ModelAndView note( ModelAndView modelAndView) {
+    public ModelAndView products( ModelAndView modelAndView) {
         modelAndView.setViewName("products/products");
 
         modelAndView.addObject("products", this.productService.getAllProducts());
 
         return modelAndView;
     }
+
+    @GetMapping("/products/product")
+//    @PreAuthorize("isAuthenticated()")
+    public ModelAndView product( ModelAndView modelAndView, Long id) {
+        modelAndView.setViewName("products/product");
+
+        modelAndView.addObject("product", this.productService.getById(id));
+
+        return modelAndView;
+    }
+
+//    @GetMapping("/delete/{id}")
+//    public ModelAndView deleteProduct(@PathVariable Long id, ModelAndView modelAndView, Model model, ModelMapper modelMapper) {
+//        ProductServiceModel productById = this.productService.getById(id);
+//
+//        modelAndView.setViewName("create_product");
+//
+////        model.addAttribute("name", modelMapper.map(productById, AddVirusBindingModel.class));
+//
+//        ProductCreateRequestModel viewModel = new ProductCreateRequestModel();
+//        viewModel.setId(productById.getId());
+//
+////        modelAndView.addObject("virusViewModel", viewModel);
+//
+//        return modelAndView;
+//    }
+//
+//    @PostMapping("/delete/{id}")
+//    public ModelAndView deleteConfirm(@PathVariable Long id, ModelAndView modelAndView) {
+//        this.productService.deleteProduct(id);
+//
+//        modelAndView.setViewName("redirect:/modes");
+//
+//        return modelAndView;
+//    }
+
+
 }

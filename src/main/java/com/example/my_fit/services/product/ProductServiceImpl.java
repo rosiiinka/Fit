@@ -1,6 +1,7 @@
 package com.example.my_fit.services.product;
 
 import com.example.my_fit.model.entity.Product;
+import com.example.my_fit.model.service.ProductServiceModel;
 import com.example.my_fit.model.view.ProductCreateRequestModel;
 import com.example.my_fit.repositories.ProductRepository;
 import org.modelmapper.ModelMapper;
@@ -37,5 +38,20 @@ public class ProductServiceImpl implements ProductService{
                 .stream()
                 .map(x -> modelMapper.map(x, ProductCreateRequestModel.class))
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public ProductServiceModel getById(Long id) {
+
+        ModelMapper modelMapper = new ModelMapper();
+
+        return modelMapper.map(this.productRepository.findById(id), ProductServiceModel.class);
+    }
+
+    @Override
+    public void deleteProduct(Long id) {
+        if(this.productRepository.findById(id).orElse(null) != null) {
+            this.productRepository.deleteById(id);
+        }
     }
 }

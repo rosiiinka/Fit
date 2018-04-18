@@ -1,11 +1,13 @@
-package com.example.my_fit.model.view;
+package com.example.my_fit.model.service;
 
-public class ProductCreateRequestModel {
-
+public class ProductServiceModel {
 
     private Long id;
     private String name;
     private Integer calories;
+
+    public ProductServiceModel() {
+    }
 
     public Long getId() {
         return id;
@@ -30,4 +32,5 @@ public class ProductCreateRequestModel {
     public void setCalories(Integer calories) {
         this.calories = calories;
     }
+
 }

@@ -5,11 +5,13 @@
     <th:block th:replace="fragments/head"></th:block>
 </head>
 <body>
+<th:block th:replace="fragments/navbar"></th:block>
 <div class="container ">
-    <th:block th:replace="fragments/navbar"></th:block>
     <th:block th:each="product : ${products}" th:object="${product}">
         <h3 class="text-center" th:text="*{name}"></h3>
         <h3 class="text-center" th:text="*{calories}"></h3>
+        <a class="btn btn-secondary" th:href="@{/modes/edit/{id}(id=*{id})}">Edit</a>
+        <a class="btn btn-secondary" th:href="@{/modes/delete/{id}(id=*{id})}">Delete</a>
     </th:block>
 
 </div>

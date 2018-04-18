@@ -37,7 +37,7 @@ public class NoteController{
     public ModelAndView createNote(NoteCreateRequestModel model) {
         this.noteService.createNote(model);
 
-        return new ModelAndView("redirect:/notes/note");
+        return new ModelAndView("redirect:/notes");
     }
 
 

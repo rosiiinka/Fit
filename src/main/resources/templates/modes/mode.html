@@ -8,13 +8,15 @@
     <th:block th:replace="fragments/head"></th:block>
 </head>
 <body>
+<th:block th:replace="fragments/navbar"></th:block>
 <div class="container ">
-    <th:block th:replace="fragments/navbar"></th:block>
     <div >
-        title
-    </div>
-    <div >
-        description
+        <th:block th>
+            <h3 class="text-center" th:text="${mode.title}"></h3>
+            <h3 class="text-center" th:text="${mode.getDescription()}"></h3>
+            <a class="btn btn-secondary" th:href="@{/modes/edit/{id}(id=${mode.id})}">Edit</a>
+            <a class="btn btn-secondary" th:href="@{/modes/delete/{id}(id=${mode.id})}">Delete</a>
+        </th:block>
     </div>
 </div>
 <th:block th:replace="fragments/footer"></th:block>
