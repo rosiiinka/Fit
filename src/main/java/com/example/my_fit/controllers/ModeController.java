@@ -18,7 +18,7 @@ public class ModeController {
     }
 
     @GetMapping("/modes")
-//    @PreAuthorize("hasRole('USER')")
+//    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     public ModelAndView modes( ModelAndView modelAndView) {
         modelAndView.setViewName("modes/modes");
 
@@ -28,7 +28,7 @@ public class ModeController {
     }
 
     @GetMapping("/modes/mode/{id}")
-//    @PreAuthorize("hasRole('USER')")
+//    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     public ModelAndView mode( ModelAndView modelAndView, @PathVariable Long id) {
         modelAndView.setViewName("modes/mode");
 
@@ -39,12 +39,13 @@ public class ModeController {
     }
 
     @GetMapping("/modes/create_mode")
-//    @PreAuthorize("isAuto")
+//    @PreAuthorize("hasRole('ADMIN')")
     public ModelAndView createMode() {
         return new ModelAndView("modes/createMode.html");
     }
 
     @PostMapping("/modes/create_mode")
+//    @PreAuthorize("hasRole('ADMIN')")
     public ModelAndView createMode(ModeCreateRequestModel model) {
         this.modeService.createMode(model);
 

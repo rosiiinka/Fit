@@ -1,5 +1,6 @@
 package com.example.my_fit.services.product;
 
+import com.example.my_fit.model.binding.ProductBindingModel;
 import com.example.my_fit.model.entity.Product;
 import com.example.my_fit.model.service.ProductServiceModel;
 import com.example.my_fit.model.view.ProductCreateRequestModel;
@@ -46,6 +47,24 @@ public class ProductServiceImpl implements ProductService{
         ModelMapper modelMapper = new ModelMapper();
 
         return modelMapper.map(this.productRepository.findById(id), ProductServiceModel.class);
+    }
+
+    @Override
+    public void editProduct(Long id, ProductBindingModel product) {
+        ModelMapper modelMapper = new ModelMapper();
+
+        Product productEntity = this.productRepository
+                .findById(id)
+                .orElse(null);
+
+        if(productEntity == null) return;
+
+        modelMapper.map(product, productEntity);
+
+        productEntity.setName(product.getName());
+        productEntity.setCalories(product.getCalories());
+
+        this.productRepository.save(productEntity);
     }
 
     @Override

@@ -10,8 +10,8 @@
     <th:block th:each="product : ${products}" th:object="${product}">
         <h3 class="text-center" th:text="*{name}"></h3>
         <h3 class="text-center" th:text="*{calories}"></h3>
-        <a class="btn btn-secondary" th:href="@{/modes/edit/{id}(id=*{id})}">Edit</a>
-        <a class="btn btn-secondary" th:href="@{/modes/delete/{id}(id=*{id})}">Delete</a>
+        <a class="btn btn-secondary" th:href="@{/products/edit/{id}(id=*{id})}">Edit</a>
+        <a class="btn btn-secondary" th:href="@{/products/delete/{id}(id=*{id})}">Delete</a>
     </th:block>
 
 </div>
