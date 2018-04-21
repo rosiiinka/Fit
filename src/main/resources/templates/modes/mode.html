@@ -2,20 +2,20 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
 <head>
-    <!--<meta charset="UTF-8">-->
-    <!--<title>Mode</title>-->
-    <!--<link rel="stylesheet" href="/styles/bootstrap.css">-->
     <th:block th:replace="fragments/head"></th:block>
 </head>
 <body>
 <th:block th:replace="fragments/navbar"></th:block>
 <div class="container ">
     <div >
-        <th:block th>
-            <h3 class="text-center" th:value="${mode.title}"></h3>
-            <h3 class="text-center" th:value="${mode.getDescription()}"></h3>
-            <a class="btn btn-secondary" th:href="@{/modes/edit/{id}(id=${mode.id})}">Edit</a>
-            <a class="btn btn-secondary" th:href="@{/modes/delete/{id}(id=${mode.id})}">Delete</a>
+        <th:block th:object="${mode}">
+            <div class="row mt-5">
+            <h3 class="text-left col-sm-8" th:text="*{title}"></h3>
+            <a sec:authorize="hasRole('ADMIN')" class="btn btn-warning col-sm-1 mr-2" th:href="@{/modes/edit/{id}(id=*{id})}">Edit</a>
+            <a sec:authorize="hasRole('ADMIN')" class="btn btn-danger col-sm-1" th:href="@{/modes/delete/{id}(id=*{id})}">Delete</a>
+            </div>
+            <hr/>
+            <div class="text-left col-sm-11 " th:text="*{description}"></div>
         </th:block>
     </div>
 </div>

@@ -7,7 +7,7 @@
         </button>
         <a class="navbar-brand nav-link-black" href="/">My Fit</a>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse test-right" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item disabled">
                     <a class="nav-link nav-link-black" href="/">Home</a>
@@ -34,10 +34,10 @@
                     <a class="nav-link nav-link-black" href="/users/profile">Profile</a>
                 </li>
 
-                <li class="nav-item disabled">
+                <li  sec:authorize="isAnonymous()" class="nav-item disabled">
                     <a class="nav-link nav-link-black" href="/login">Login</a>
                 </li>
-                <li class="nav-item disabled">
+                <li sec:authorize="isAnonymous()" class="nav-item disabled">
                     <a class="nav-link nav-link-black" href="/users/register">Register</a>
                 </li>
                 <li sec:authorize="isAuthenticated()" class="nav-item disabled">

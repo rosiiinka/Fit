@@ -2,6 +2,7 @@ package com.example.my_fit.controllers;
 
 import com.example.my_fit.model.view.ModeViewModel;
 import com.example.my_fit.services.mode.ModeService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,7 +19,7 @@ public class ModeController {
     }
 
     @GetMapping("/modes")
-//    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     public ModelAndView modes( ModelAndView modelAndView) {
         modelAndView.setViewName("modes/modes");
 
@@ -28,7 +29,7 @@ public class ModeController {
     }
 
     @GetMapping("/modes/mode/{id}")
-//    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     public ModelAndView mode( ModelAndView modelAndView, @PathVariable Long id) {
         modelAndView.setViewName("modes/mode");
 
@@ -39,13 +40,13 @@ public class ModeController {
     }
 
     @GetMapping("/modes/create_mode")
-//    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     public ModelAndView createMode() {
         return new ModelAndView("modes/createMode.html");
     }
 
     @PostMapping("/modes/create_mode")
-//    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     public ModelAndView createMode(ModeViewModel model) {
         this.modeService.createMode(model);
 

@@ -5,9 +5,6 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-    <!--<meta charset="UTF-8">-->
-    <!--<title>Calories Calculator</title>-->
-    <!--<link rel="stylesheet" href="/styles/bootstrap.css">-->
     <th:block th:replace="fragments/head"></th:block>
 </head>
 <body>
@@ -33,7 +30,7 @@
                 </div>
             </div>
             <div class="col-md-12 text-center">
-                <button type="submit" class="btn btn-info ">Add</button>
+                <button type="submit" class="btn btn-info mb-5 ">Add</button>
             </div>
             <input
                     type="hidden"
@@ -41,11 +38,17 @@
                     th:value="${_csrf.token}" />
         </fieldset>
     </form>
-<div  class="container-fluid">
-    <th:block th:each="note : ${notes}" th:object="${note}">
-        <h3 class="text-center" th:text="*{product}"></h3>
-        <h3 class="text-center" th:text="*{quantity}"></h3>
-    </th:block>
+    <div  class="container-fluid">
+        <div class="card" style="width: 25rem;">
+            <div class="card-header">Notes</div>
+
+            <th:block th:each="note : ${notes}" th:object="${note}">
+                <div class="card-body row">
+                    <h3 class=" ml-3 text-left col-sm-8" th:text="*{product}">Product</h3>
+                    <h3 class="text-right col-sm-2" th:text="*{quantity}">4</h3>
+                </div>
+            </th:block>
+        </div>
 </div>
 
 

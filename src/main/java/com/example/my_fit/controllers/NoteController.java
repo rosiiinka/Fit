@@ -3,6 +3,7 @@ package com.example.my_fit.controllers;
 import com.example.my_fit.model.view.NoteViewModel;
 import com.example.my_fit.services.note.NoteService;
 import com.example.my_fit.services.product.ProductService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,7 +24,7 @@ public class NoteController{
     }
 
     @GetMapping("/notes")
-//    @PreAuthorize("isAuthenticated()")
+    @PreAuthorize("hasRole('USER')")
     public ModelAndView note( ModelAndView modelAndView) {
         modelAndView.setViewName("notes/note");
 
@@ -34,6 +35,7 @@ public class NoteController{
     }
 
     @PostMapping("/notes")
+    @PreAuthorize("hasRole('USER')")
     public ModelAndView createNote(NoteViewModel model) {
         this.noteService.createNote(model);
 

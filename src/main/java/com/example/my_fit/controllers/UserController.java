@@ -3,6 +3,7 @@ package com.example.my_fit.controllers;
 import com.example.my_fit.model.view.UserRegisterRequestModel;
 import com.example.my_fit.services.note.NoteService;
 import com.example.my_fit.services.user.UserService;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,11 +23,13 @@ public class UserController {
     }
 
     @GetMapping("/users/register")
+    @PreAuthorize("isAnonymous()")
     public ModelAndView register(){
         return new ModelAndView("users/register.html");
     }
 
     @PostMapping("/users/register")
+    @PreAuthorize("isAnonymous()")
     public ModelAndView register(UserRegisterRequestModel model) {
         this.userService.register(model);
 
@@ -34,6 +37,7 @@ public class UserController {
     }
 
     @PostMapping("/logout")
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     public ModelAndView logout(@RequestParam(required = false, name = "logout") String logout, ModelAndView modelAndView, RedirectAttributes redirectAttributes) {
         modelAndView.setViewName("redirect:/login");
 
@@ -43,7 +47,7 @@ public class UserController {
     }
 
     @GetMapping("/users/profile")
-//    @PreAuthorize("isAuthenticated()")
+    @PreAuthorize("hasRole('USER')")
     public ModelAndView profile( ModelAndView modelAndView) {
         modelAndView.setViewName("users/profile");
 

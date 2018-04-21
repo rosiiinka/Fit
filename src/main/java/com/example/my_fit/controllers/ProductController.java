@@ -30,14 +30,14 @@ public class ProductController {
 
 
     @GetMapping("/products/create_product")
-//    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     public ModelAndView createMode() {
         return new ModelAndView("products/create_product.html");
     }
 
 
     @PostMapping("/products/create_product")
-//    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     public ModelAndView createProduct(ProductViewModel model) {
         this.productService.createProduct(model);
 

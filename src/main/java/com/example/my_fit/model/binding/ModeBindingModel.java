@@ -10,7 +10,7 @@ public class ModeBindingModel {
     private String title;
 
     @NotEmpty(message = "Description calories cannot be empty.")
-    @Size(min=3, max=250, message = "Description name must be between 3 and 250 symbols long.")
+    @Size(min=100, max=1000, message = "Description name must be between 3 and 250 symbols long.")
     private String Description;
 
     public ModeBindingModel() {

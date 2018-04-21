@@ -6,13 +6,28 @@
 </head>
 <body>
 <th:block th:replace="fragments/navbar"></th:block>
-<div class="container ">
-    <th:block th:each="product : ${products}" th:object="${product}">
-        <h3 class="text-center" th:text="*{name}"></h3>
-        <h3 class="text-center" th:text="*{calories}"></h3>
-        <a class="btn btn-secondary" th:href="@{/products/edit/{id}(id=*{id})}">Edit</a>
-        <a class="btn btn-secondary" th:href="@{/products/delete/{id}(id=*{id})}">Delete</a>
-    </th:block>
+<div class="container d-flex justify-content-center">
+    <table class="table mt-5 ml-5">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Calories</th>
+            <th sec:authorize="hasRole('ADMIN')" scope="col">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <th:block th:each="product,iter : ${products}" th:object="${product}">
+            <tr>
+                <th scope="row" th:text="${iter.index + 1}"></th>
+                <td th:text="*{name}"></td>
+                <td th:text="*{calories}"></td>
+                <td sec:authorize="hasRole('ADMIN')"> <a class="btn btn-warning" th:href="@{/products/edit/{id}(id=*{id})}">Edit</a></td>
+                <td sec:authorize="hasRole('ADMIN')"><a class="btn btn-danger" th:href="@{/products/delete/{id}(id=*{id})}">Delete</a></td>
+            </tr>
+        </th:block>
+        </tbody>
+    </table>
 
 </div>
 <th:block th:replace="fragments/footer"></th:block>

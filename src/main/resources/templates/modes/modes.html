@@ -9,11 +9,14 @@
 <th:block th:replace="fragments/navbar"></th:block>
 <div class="container ">
     <th:block th:each="mode : ${modes}" th:object="${mode}">
-        <div class="text-left" th:text="*{title}"></div>
+        <div class="text-left"><h4 th:text="*{title}">title</h4></div>
         <div class="row">
-            <div class="text-left col-sm-8"><p th:text="*{description}"></p></div>
+            <!--<div class="text-left col-sm-8" th:text="|${#strings.substring(mode.description,1,100)}...|"></div>-->
+            <div class="text-left col-sm-8" th:text="|${#strings.substring(mode.description,1,90)}...|"></div>
             <div class="col-sm-2"></div>
-        <button class="btn btn-warning col-sm-2"><a th:href="@{/modes/mode/{id}(id=*{id})}">Read more...</a></button>
+            <div class="col-sm-2">
+        <button class="btn btn-warning "><a th:href="@{/modes/mode/{id}(id=*{id})}">Read more...</a></button>
+            </div>
         </div>
         <hr/>
     </th:block>
