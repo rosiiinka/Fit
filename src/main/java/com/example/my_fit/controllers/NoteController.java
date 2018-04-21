@@ -1,6 +1,6 @@
 package com.example.my_fit.controllers;
 
-import com.example.my_fit.model.view.NoteCreateRequestModel;
+import com.example.my_fit.model.view.NoteViewModel;
 import com.example.my_fit.services.note.NoteService;
 import com.example.my_fit.services.product.ProductService;
 import org.springframework.stereotype.Controller;
@@ -34,7 +34,7 @@ public class NoteController{
     }
 
     @PostMapping("/notes")
-    public ModelAndView createNote(NoteCreateRequestModel model) {
+    public ModelAndView createNote(NoteViewModel model) {
         this.noteService.createNote(model);
 
         return new ModelAndView("redirect:/notes");

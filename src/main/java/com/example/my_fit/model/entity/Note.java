@@ -9,8 +9,10 @@ public class Note {
 
     private Long id;
 
+    @Column(nullable = false)
     private String product;
 
+    @Column(nullable = false)
     private Integer quantity;
 
     private Set<User> users;
@@ -45,6 +47,7 @@ public class Note {
         this.quantity = quantity;
     }
 
+//    @OneToMany(mappedBy = "notes")
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "notes")
     public Set<User> getUsers() {
         return users;

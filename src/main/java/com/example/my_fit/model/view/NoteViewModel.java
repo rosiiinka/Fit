@@ -1,9 +1,20 @@
 package com.example.my_fit.model.view;
 
-public class NoteCreateRequestModel {
+public class NoteViewModel {
+
+    private Long Id;
+
     private String product;
 
     private Integer quantity;
+
+    public Long getId() {
+        return Id;
+    }
+
+    public void setId(Long id) {
+        Id = id;
+    }
 
     public String getProduct() {
         return product;

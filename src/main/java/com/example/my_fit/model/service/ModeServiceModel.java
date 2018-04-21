@@ -1,20 +1,16 @@
-package com.example.my_fit.model.entity;
+package com.example.my_fit.model.service;
 
-import javax.persistence.*;
-
-@Entity
-public class Mode {
+public class ModeServiceModel {
 
     private Long id;
 
-    @Column(nullable = false)
     private String title;
 
-    @Column(nullable = false)
     private String description;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    public ModeServiceModel() {
+    }
+
     public Long getId() {
         return id;
     }

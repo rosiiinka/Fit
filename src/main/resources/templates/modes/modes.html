@@ -11,10 +11,11 @@
     <th:block th:each="mode : ${modes}" th:object="${mode}">
         <div class="text-left" th:text="*{title}"></div>
         <div class="row">
-        <div class="text-left col-sm-8" th:text="*{description}"></div>
+            <div class="text-left col-sm-8"><p th:text="*{description}"></p></div>
             <div class="col-sm-2"></div>
         <button class="btn btn-warning col-sm-2"><a th:href="@{/modes/mode/{id}(id=*{id})}">Read more...</a></button>
         </div>
+        <hr/>
     </th:block>
 
 </div>

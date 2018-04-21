@@ -15,31 +15,31 @@
                 <li class="nav-item disabled">
                     <a class="nav-link nav-link-black" href="/contacts">Contacts</a>
                 </li>
+                <li sec:authorize="hasAnyRole('ADMIN', 'USER')" class="nav-item disabled">
+                    <a class="nav-link nav-link-black" href="/modes">Modes</a>
+                </li>
+                <li sec:authorize="hasRole('ADMIN')" class="nav-item disabled">
+                    <a class="nav-link nav-link-black" href="/modes/create_mode">Create Mode</a>
+                </li>
+                <li  sec:authorize="hasRole('ADMIN')" class="nav-item disabled">
+                    <a class="nav-link nav-link-black" href="/products/create_product">Create Product</a>
+                </li>
+                <li sec:authorize="hasAnyRole('ADMIN', 'USER')" class="nav-item disabled">
+                    <a class="nav-link nav-link-black" href="/products">Products</a>
+                </li>
+                <li sec:authorize="hasAnyRole('USER')" class="nav-item disabled">
+                    <a class="nav-link nav-link-black" href="/notes">Note</a>
+                </li>
+                <li  sec:authorize="hasRole('USER')" class="nav-item disabled">
+                    <a class="nav-link nav-link-black" href="/users/profile">Profile</a>
+                </li>
+
                 <li class="nav-item disabled">
                     <a class="nav-link nav-link-black" href="/login">Login</a>
                 </li>
                 <li class="nav-item disabled">
                     <a class="nav-link nav-link-black" href="/users/register">Register</a>
                 </li>
-                <li sec:authorize="isAuthenticated()" class="nav-item disabled">
-                    <a class="nav-link nav-link-black" href="/modes">Modes</a>
-                </li>
-                <li sec:authorize="isAuthenticated()" class="nav-item disabled">
-                    <a class="nav-link nav-link-black" href="/modes/create_mode">Create Mode</a>
-                </li>
-                <li sec:authorize="isAuthenticated()" class="nav-item disabled">
-                    <a class="nav-link nav-link-black" href="/products/create_product">Create Product</a>
-                </li>
-                <li sec:authorize="isAuthenticated()" class="nav-item disabled">
-                    <a class="nav-link nav-link-black" href="/products">Products</a>
-                </li>
-                <li sec:authorize="isAuthenticated()" class="nav-item disabled">
-                    <a class="nav-link nav-link-black" href="/notes">Note</a>
-                </li>
-                <li sec:authorize="isAuthenticated()" class="nav-item disabled">
-                    <a class="nav-link nav-link-black" href="/users/profile">Profile</a>
-                </li>
-
                 <li sec:authorize="isAuthenticated()" class="nav-item disabled">
                     <form th:action="@{/logout}" th:method="POST">
                         <button type="submit" class="nav-link nav-link-black">Logout</button>

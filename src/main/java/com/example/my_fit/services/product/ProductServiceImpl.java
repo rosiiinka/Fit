@@ -1,9 +1,8 @@
 package com.example.my_fit.services.product;
 
-import com.example.my_fit.model.binding.ProductBindingModel;
 import com.example.my_fit.model.entity.Product;
 import com.example.my_fit.model.service.ProductServiceModel;
-import com.example.my_fit.model.view.ProductCreateRequestModel;
+import com.example.my_fit.model.view.ProductViewModel;
 import com.example.my_fit.repositories.ProductRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -22,8 +21,9 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public Product createProduct(ProductCreateRequestModel model) {
+    public Product createProduct(ProductViewModel model) {
         Product product = new Product();
+        product.setId(model.getId());
         product.setName(model.getName());
         product.setCalories(model.getCalories());
 
@@ -31,13 +31,13 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public List<ProductCreateRequestModel> getAllProducts() {
+    public List<ProductViewModel> getAllProducts() {
         ModelMapper modelMapper = new ModelMapper();
 
         return this.productRepository
                 .findAll()
                 .stream()
-                .map(x -> modelMapper.map(x, ProductCreateRequestModel.class))
+                .map(x -> modelMapper.map(x, ProductViewModel.class))
                 .collect(Collectors.toList());
     }
 
@@ -49,28 +49,28 @@ public class ProductServiceImpl implements ProductService{
         return modelMapper.map(this.productRepository.findById(id), ProductServiceModel.class);
     }
 
-    @Override
-    public void editProduct(Long id, ProductBindingModel product) {
-        ModelMapper modelMapper = new ModelMapper();
-
-        Product productEntity = this.productRepository
-                .findById(id)
-                .orElse(null);
-
-        if(productEntity == null) return;
-
-        modelMapper.map(product, productEntity);
-
-        productEntity.setName(product.getName());
-        productEntity.setCalories(product.getCalories());
-
-        this.productRepository.save(productEntity);
-    }
-
-    @Override
-    public void deleteProduct(Long id) {
-        if(this.productRepository.findById(id).orElse(null) != null) {
-            this.productRepository.deleteById(id);
-        }
-    }
+//    @Override
+//    public void editProduct(Long id, ProductBindingModel product) {
+//        ModelMapper modelMapper = new ModelMapper();
+//
+//        Product productEntity = this.productRepository
+//                .findById(id)
+//                .orElse(null);
+//
+//        if(productEntity == null) return;
+//
+//        modelMapper.map(product, productEntity);
+//
+//        productEntity.setName(product.getName());
+//        productEntity.setCalories(product.getCalories());
+//
+//        this.productRepository.save(productEntity);
+//    }
+//
+//    @Override
+//    public void deleteProduct(Long id) {
+//        if(this.productRepository.findById(id).orElse(null) != null) {
+//            this.productRepository.deleteById(id);
+//        }
+//    }
 }

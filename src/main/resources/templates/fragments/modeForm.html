@@ -1,0 +1,30 @@
+<th:block th:fragment="modeform">
+    <form class="mt-4" th:action="|@{'/modes/' + ${formMode} + ${formMode.equals('edit') || formMode.equals('delete') ? ('/' + modeViewModel.getId()) : ('')}}|" th:method="POST" th:object="${modeInput}">
+        <div class="form-group" th:classappend="${#fields.hasErrors('title')} ? 'has-danger'">
+            <label for="title">Title</label>
+            <input type="text" class="form-control" th:field="*{title}" th:value="${prductInput.geTitle()}" id="title"
+                   name="title" th:disabled="${formMode.equals('delete')}"/>
+            <th:block th:each="error : ${#fields.errors('title')}">
+                <small class="text-danger"
+                       th:text="${error}"></small>
+            </th:block>
+
+        </div>
+        <div class="form-group" th:classappend="${#fields.hasErrors('description')} ? 'has-danger'">
+            <label for="description">Description</label>
+            <textarea style="resize: none;" class="form-control" th:text="${modeInput.getDescription()}"
+                      id="description" name="description"
+                      rows="3" th:disabled="${formMode.equals('delete')}"></textarea>
+            <th:block th:each="error : ${#fields.errors('description')}">
+                <small class="text-danger"
+                       th:text="${error}"></small>
+            </th:block>
+        </div>
+
+        <div class="d-flex justify-content-around mb-4">
+            <button type="submit" class="btn btn-lg"
+                    th:classappend="${(formMode.equals('create') ? 'btn-primary' : '') + (formMode.equals('edit') ? 'btn-success' : '') + (formMode.equals('delete') ? 'btn-danger' : '')}" th:text="|${#strings.capitalize(formMode)} Mode|"></button>
+            <a class="btn btn-danger btn-lg" th:href="@{/}">Cancel</a>
+        </div>
+    </form>
+</th:block>

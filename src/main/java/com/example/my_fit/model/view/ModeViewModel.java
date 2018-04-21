@@ -1,6 +1,6 @@
 package com.example.my_fit.model.view;
 
-public class ModeCreateRequestModel {
+public class ModeViewModel {
 
     private Long id;
     private String title;

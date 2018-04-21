@@ -9,8 +9,10 @@ public class User {
 
     private Long id;
 
+    @Column(nullable = false)
     private String username;
 
+    @Column(nullable = false)
     private String password;
 
     private Set<Role> roles;
@@ -57,7 +59,9 @@ public class User {
         this.roles = roles;
     }
 
-    @ManyToMany(fetch = FetchType.EAGER)
+//    @ManyToOne(cascade = CascadeType.PERSIST)
+//    @JoinColumn(name = "notes")
+@ManyToMany(fetch = FetchType.EAGER)
     public Set<Note> getNotes() {
         return notes;
     }

@@ -1,6 +1,6 @@
 package com.example.my_fit.model.view;
 
-public class ProductCreateRequestModel {
+public class ProductViewModel {
 
 
     private Long id;
