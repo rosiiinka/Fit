@@ -1,8 +1,6 @@
 package com.example.my_fit.model.entity;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 public class Note {
@@ -15,11 +13,7 @@ public class Note {
     @Column(nullable = false)
     private Integer quantity;
 
-    private Set<User> users;
-
-    public Note() {
-        this.users = new HashSet<>();
-    }
+    private User user;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -47,13 +41,12 @@ public class Note {
         this.quantity = quantity;
     }
 
-//    @OneToMany(mappedBy = "notes")
-    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "notes")
-    public Set<User> getUsers() {
-        return users;
+    @ManyToOne
+    public User getUser() {
+        return user;
     }
 
-    public void setUsers(Set<User> users) {
-        this.users = users;
+    public void setUser(User user) {
+        this.user = user;
     }
 }

@@ -59,9 +59,8 @@ public class User {
         this.roles = roles;
     }
 
-//    @ManyToOne(cascade = CascadeType.PERSIST)
-//    @JoinColumn(name = "notes")
-@ManyToMany(fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "user")
+//@ManyToMany(fetch = FetchType.EAGER)
     public Set<Note> getNotes() {
         return notes;
     }

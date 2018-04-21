@@ -6,4 +6,5 @@ import com.example.my_fit.model.view.UserRegisterRequestModel;
 public interface UserService {
 
     User register(UserRegisterRequestModel model);
+
 }

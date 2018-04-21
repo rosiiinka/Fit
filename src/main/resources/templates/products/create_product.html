@@ -2,9 +2,6 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
 <head>
-    <!--<meta charset="UTF-8">-->
-    <!--<title>Create Food Calories</title>-->
-    <!--<link rel="stylesheet" href="/styles/bootstrap.css">-->
     <th:block th:replace="fragments/head"></th:block>
 </head>
 <body>
@@ -12,7 +9,7 @@
 <div class="container-fluid d-flex justify-content-center">
     <form method="post">
         <fieldset>
-            <legend class="text-center">Create Product Calories</legend>
+            <legend class="text-center mt-5">Create Product Calories</legend>
             <div class="form-group ">
                 <label for="name" class="col-sm-4 col-form-label">Name</label>
                 <div class="col-sm-12">
@@ -26,7 +23,7 @@
                 </div>
             </div>
             <div class="col-md-12 text-center">
-                <button type="submit" class="btn btn-info ">Create</button>
+                <button type="submit" class="btn btn-info mb-5">Create</button>
             </div>
             <input
                     type="hidden"

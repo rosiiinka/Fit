@@ -1,9 +1,11 @@
 package com.example.my_fit.services.note;
 
 import com.example.my_fit.model.entity.Note;
+import com.example.my_fit.model.entity.User;
 import com.example.my_fit.model.view.NoteViewModel;
 import com.example.my_fit.repositories.NoteRepository;
 import com.example.my_fit.repositories.UserRepository;
+import com.example.my_fit.services.user.UserServiceImpl;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
@@ -17,24 +19,29 @@ public class NoteServiceImlp implements NoteService {
 
     private final NoteRepository noteRepository;
     private final UserRepository userRepository;
+    private final UserServiceImpl userService;
 
-    public NoteServiceImlp(NoteRepository noteRepository, UserRepository userRepository) {
+    public NoteServiceImlp(NoteRepository noteRepository, UserRepository userRepository, UserServiceImpl userService) {
         this.noteRepository = noteRepository;
         this.userRepository = userRepository;
+        this.userService = userService;
     }
 
     @Override
-    public Note createNote(NoteViewModel model) {
+    public Note createNote(NoteViewModel model, Long id) {
         Note note = new Note();
         note.setId(model.getId());
         note.setProduct(model.getProduct());
         note.setQuantity(model.getQuantity());
 
-//        User user = this.userRepository.findAllById(model.getId());
-//        user.getNotes().add(note);
-//        note.getUsers().add(user);
+//        User user = this.userRepository.findUserById(model.getId());
+////        user.getNotes().add(note);
+//        note.setUser(user);
 //
 //        this.userRepository.save(user);
+        User user = this.userService.findUserEntityById(id);
+       note.setUser(user);
+
 
         return this.noteRepository.save(note);
     }

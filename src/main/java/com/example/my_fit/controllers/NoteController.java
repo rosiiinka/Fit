@@ -36,8 +36,8 @@ public class NoteController{
 
     @PostMapping("/notes")
     @PreAuthorize("hasRole('USER')")
-    public ModelAndView createNote(NoteViewModel model) {
-        this.noteService.createNote(model);
+    public ModelAndView createNote(NoteViewModel model, Long id) {
+        this.noteService.createNote(model, id);
 
         return new ModelAndView("redirect:/notes");
     }

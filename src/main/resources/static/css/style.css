@@ -33,6 +33,9 @@ footer{
 
 .map{
     width: 100%;
-
     height: 500px;
+}
+
+.logout{
+    background-color: #5b0b91;
 }

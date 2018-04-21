@@ -66,4 +66,8 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
         return userDetails;
     }
+
+   public User findUserEntityById(Long id) {
+        return this.userRepository.findFirstById(id);
+    }
 }

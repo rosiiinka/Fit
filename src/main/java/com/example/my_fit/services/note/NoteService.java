@@ -6,7 +6,7 @@ import com.example.my_fit.model.view.NoteViewModel;
 import java.util.List;
 
 public interface NoteService {
-    Note createNote(NoteViewModel model);
+    Note createNote(NoteViewModel model, Long id);
 
     List<NoteViewModel> getAllNotes();
 }
