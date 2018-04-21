@@ -26,3 +26,13 @@ footer{
 .container{
     margin: 10px;
 }
+
+.home{
+    color: #5b0b91;
+}
+
+.map{
+    width: 100%;
+
+    height: 500px;
+}
