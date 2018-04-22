@@ -37,7 +37,6 @@ public class UserController {
     }
 
     @PostMapping("/logout")
-    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     public ModelAndView logout(@RequestParam(required = false, name = "logout") String logout, ModelAndView modelAndView, RedirectAttributes redirectAttributes) {
         modelAndView.setViewName("redirect:/login");
 
