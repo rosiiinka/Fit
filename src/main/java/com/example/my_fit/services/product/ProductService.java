@@ -12,6 +12,8 @@ public interface ProductService {
 
     List<ProductViewModel> getAllProducts();
 
+    List<ProductServiceModel> getProductsBySimilarName(String name);
+
     ProductServiceModel getById(Long id);
 
     void deleteProduct(Long id);

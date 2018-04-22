@@ -74,4 +74,17 @@ public class ProductServiceImpl implements ProductService{
             this.productRepository.deleteById(id);
         }
     }
+
+
+    @Override
+    public List<ProductServiceModel> getProductsBySimilarName(String name) {
+        ModelMapper modelMapper = new ModelMapper();
+
+        return this.productRepository
+                .findAll()
+                .stream()
+                .filter(x -> x.getName().contains(name))
+                .map(x -> modelMapper.map(x, ProductServiceModel.class))
+                .collect(Collectors.toList());
+    }
 }

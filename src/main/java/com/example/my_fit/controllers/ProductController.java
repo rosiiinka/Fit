@@ -9,10 +9,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -27,16 +24,18 @@ public class ProductController {
         this.productService = productService;
     }
 
-//
-//    @GetMapping("/products/create_product")
-////    @PreAuthorize("hasRole('ADMIN')")
-//    public ModelAndView product( ModelAndView modelAndView, @PathVariable Long id) {
-//        modelAndView.setViewName("/products/create_product");
-//
-//        modelAndView.addObject("product", this.productService.getById(id));
-//
-//        return modelAndView;
-//    }
+    @GetMapping("/search/ing")
+    public ModelAndView search(@RequestParam(name = "name") String name, ModelAndView modelAndView) {
+        modelAndView.setViewName("products/products");
+
+        if(name.isEmpty()) {
+            modelAndView.addObject("products", this.productService.getAllProducts());
+        } else {
+            modelAndView.addObject("products", this.productService.getProductsBySimilarName(name));
+        }
+
+        return modelAndView;
+    }
 
 
     @GetMapping("/products/create_product")
