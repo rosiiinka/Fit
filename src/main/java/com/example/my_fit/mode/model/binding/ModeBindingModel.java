@@ -1,4 +1,4 @@
-package com.example.my_fit.model.binding;
+package com.example.my_fit.mode.model.binding;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;

@@ -1,8 +1,8 @@
-package com.example.my_fit.services.mode;
+package com.example.my_fit.mode.service;
 
-import com.example.my_fit.model.entity.Mode;
-import com.example.my_fit.model.service.ModeServiceModel;
-import com.example.my_fit.model.view.ModeViewModel;
+import com.example.my_fit.mode.model.entity.Mode;
+import com.example.my_fit.mode.model.service.ModeServiceModel;
+import com.example.my_fit.mode.model.view.ModeViewModel;
 
 import java.util.List;
 

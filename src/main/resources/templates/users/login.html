@@ -9,9 +9,10 @@
 <div class="container-fluid  d-flex justify-content-center ">
     <h1 class="danger" th:text="${error}"></h1>
     <h1 class="success" th:text="${logout}"></h1>
-    <form method="post">
+    <form method="post" onsubmit="validate()">
         <fieldset>
             <legend class="text-center">Login</legend>
+            <div class="error"></div>
             <div class="form-group ">
                 <label for="username" class="col-sm-4 col-form-label">Username</label>
                 <div class="col-sm-12">
@@ -29,11 +30,26 @@
                     th:name="${_csrf.parameterName}"
                     th:value="${_csrf.token}" />
             <div class="col-md-12 text-center">
-            <button type="submit" class="btn btn-info mb-5">Sign in </button>
+            <button type="submit" class="btn btn-info mb-5" >Sign in </button>
             </div>
         </fieldset>
     </form>
 </div>
+<script>
+    function validate() {
+       if( $('input[name="username"]').val() == ''){
+           alert('Username should not be empty!');
+       }
+
+        if( $('input[name="username"]').val() == ''){
+          alert('Password should not be empty!');
+        }else if($('input[name="username"]').length < 3){
+           alert('Password should not less than 3 symbols!');
+
+        }
+
+    }
+</script>
 <th:block th:replace="fragments/footer"></th:block>
 </body>
 </html>

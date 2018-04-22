@@ -1,4 +1,4 @@
-package com.example.my_fit.model.entity;
+package com.example.my_fit.mode.model.entity;
 
 import javax.persistence.*;
 

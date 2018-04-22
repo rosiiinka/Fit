@@ -34,13 +34,8 @@ public class NoteServiceImlp implements NoteService {
         note.setProduct(model.getProduct());
         note.setQuantity(model.getQuantity());
 
-//        User user = this.userRepository.findUserById(model.getId());
-////        user.getNotes().add(note);
-//        note.setUser(user);
-//
-//        this.userRepository.save(user);
         User user = this.userService.findUserEntityById(id);
-       note.setUser(user);
+        note.setUser(user);
 
 
         return this.noteRepository.save(note);

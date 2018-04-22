@@ -1,7 +1,7 @@
-package com.example.my_fit.controllers;
+package com.example.my_fit.mode.controller;
 
-import com.example.my_fit.model.view.ModeViewModel;
-import com.example.my_fit.services.mode.ModeService;
+import com.example.my_fit.mode.model.view.ModeViewModel;
+import com.example.my_fit.mode.service.ModeService;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -1,10 +1,15 @@
-package com.example.my_fit.model.view;
+package com.example.my_fit.mode.model.service;
 
-public class ModeViewModel {
+public class ModeServiceModel {
 
     private Long id;
+
     private String title;
+
     private String description;
+
+    public ModeServiceModel() {
+    }
 
     public Long getId() {
         return id;

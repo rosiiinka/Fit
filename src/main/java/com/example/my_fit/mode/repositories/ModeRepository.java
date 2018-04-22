@@ -1,6 +1,6 @@
-package com.example.my_fit.repositories;
+package com.example.my_fit.mode.repositories;
 
-import com.example.my_fit.model.entity.Mode;
+import com.example.my_fit.mode.model.entity.Mode;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
