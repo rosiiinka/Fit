@@ -1,5 +1,6 @@
 package com.example.my_fit.mode.service;
 
+import com.example.my_fit.mode.model.binding.ModeBindingModel;
 import com.example.my_fit.mode.model.entity.Mode;
 import com.example.my_fit.mode.model.service.ModeServiceModel;
 import com.example.my_fit.mode.model.view.ModeViewModel;
@@ -49,29 +50,29 @@ public class ModeServiceImpl implements ModeService {
         return modelMapper.map(this.modeRepository.findById(id), ModeServiceModel.class);
     }
 
-//    @Override
-//    public void editMode(Long id, ModeBindingModel mode) {
-//        ModelMapper modelMapper = new ModelMapper();
-//
-//        Mode modeEntity = this.modeRepository
-//                .findById(id)
-//                .orElse(null);
-//
-//        if(modeEntity == null) return;
-//
-//        modelMapper.map(mode, modeEntity);
-//
-//        modeEntity.setTitle(mode.getTitle());
-//        modeEntity.setDescription(mode.getDescription());
-//
-//        this.modeRepository.save(modeEntity);
-//    }
-//
-//    @Override
-//    public void deleteMode(Long id) {
-//        if(this.modeRepository.findById(id).orElse(null) != null) {
-//            this.modeRepository.deleteById(id);
-//        }
-//    }
+    @Override
+    public void editMode(Long id, ModeBindingModel mode) {
+        ModelMapper modelMapper = new ModelMapper();
+
+        Mode modeEntity = this.modeRepository
+                .findById(id)
+                .orElse(null);
+
+        if(modeEntity == null) return;
+
+        modelMapper.map(mode, modeEntity);
+
+        modeEntity.setTitle(mode.getTitle());
+        modeEntity.setDescription(mode.getDescription());
+
+        this.modeRepository.save(modeEntity);
+    }
+
+    @Override
+    public void deleteMode(Long id) {
+        if(this.modeRepository.findById(id).orElse(null) != null) {
+            this.modeRepository.deleteById(id);
+        }
+    }
 
 }
