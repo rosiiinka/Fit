@@ -45,7 +45,7 @@
             <th:block th:each="note : ${notes}" th:object="${note}">
                 <div class="card-body row">
                     <h3 class=" ml-3 text-left col-sm-8" th:text="*{product}"></h3>
-                    <h3 class="text-right col-sm-2" th:text="*{quantity}"></h3>
+                    <h3 class="text-right col-sm-2" th:text="*{quantity*100}"></h3>
                 </div>
             </th:block>
         </div>
