@@ -62,68 +62,68 @@ public class ModeController {
         return new ModelAndView("redirect:/modes");
     }
 
-    @GetMapping("/edit/{id}")
-    //    @PreAuthorize("hasRole('ADMIN')")
-    public ModelAndView editMode(@PathVariable Long id, ModelAndView modelAndView, Model model, ModelMapper modelMapper) {
-        ModeServiceModel modeById = this.modeService.getById(id);
-
-        modelAndView.setViewName("createMode");
-
-        if(!model.containsAttribute("modeInput")) {
-            ModeBindingModel bindingModel = modelMapper.map(modeById, ModeBindingModel.class);
-
-            model.addAttribute("modeInput", bindingModel);
-        }
-
-        ModeViewModel viewModel = new ModeViewModel();
-
-        viewModel.setId(modeById.getId());
-
-        modelAndView.addObject("modeViewModel", viewModel);
-
-        return modelAndView;
-    }
-
-    @PostMapping("/edit/{id}")
-    //    @PreAuthorize("hasRole('ADMIN')")
-    public ModelAndView editModeConfirm(@PathVariable Long id, @Valid @ModelAttribute(name = "modeInput") ModeBindingModel modeBindingModel, BindingResult bindingResult, ModelAndView modelAndView, RedirectAttributes redirectAttributes) {
-        if(bindingResult.hasErrors()) {
-            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.modeInput", bindingResult);
-            redirectAttributes.addFlashAttribute("modeInput", modeBindingModel);
-
-            modelAndView.setViewName("redirect:createMode");
-        } else {
-            this.modeService.editMode(id, modeBindingModel);
-            modelAndView.setViewName("redirect:/modes");
-        }
-
-        return modelAndView;
-    }
-
-    @GetMapping("/delete/{id}")
-    //    @PreAuthorize("hasRole('ADMIN')")
-    public ModelAndView deleteMode(@PathVariable Long id, ModelAndView modelAndView, Model model, ModelMapper modelMapper) {
-        ModeServiceModel modeById = this.modeService.getById(id);
-
-        modelAndView.setViewName("createMode");
-
-        model.addAttribute("modeInput", modelMapper.map(modeById, ModeBindingModel.class));
-
-        ModeViewModel viewModel = new ModeViewModel();
-        viewModel.setId(modeById.getId());
-
-        modelAndView.addObject("modeViewModel", viewModel);
-
-        return modelAndView;
-    }
-
-    @PostMapping("/delete/{id}")
-    //    @PreAuthorize("hasRole('ADMIN')")
-    public ModelAndView deleteConfirm(@PathVariable Long id, ModelAndView modelAndView) {
-        this.modeService.deleteMode(id);
-
-        modelAndView.setViewName("redirect:/modes");
-
-        return modelAndView;
-    }
+//    @GetMapping("/edit/{id}")
+//    //    @PreAuthorize("hasRole('ADMIN')")
+//    public ModelAndView editMode(@PathVariable Long id, ModelAndView modelAndView, Model model, ModelMapper modelMapper) {
+//        ModeServiceModel modeById = this.modeService.getById(id);
+//
+//        modelAndView.setViewName("createMode");
+//
+//        if(!model.containsAttribute("modeInput")) {
+//            ModeBindingModel bindingModel = modelMapper.map(modeById, ModeBindingModel.class);
+//
+//            model.addAttribute("modeInput", bindingModel);
+//        }
+//
+//        ModeViewModel viewModel = new ModeViewModel();
+//
+//        viewModel.setId(modeById.getId());
+//
+//        modelAndView.addObject("modeViewModel", viewModel);
+//
+//        return modelAndView;
+//    }
+//
+//    @PostMapping("/edit/{id}")
+//    //    @PreAuthorize("hasRole('ADMIN')")
+//    public ModelAndView editModeConfirm(@PathVariable Long id, @Valid @ModelAttribute(name = "modeInput") ModeBindingModel modeBindingModel, BindingResult bindingResult, ModelAndView modelAndView, RedirectAttributes redirectAttributes) {
+//        if(bindingResult.hasErrors()) {
+//            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.modeInput", bindingResult);
+//            redirectAttributes.addFlashAttribute("modeInput", modeBindingModel);
+//
+//            modelAndView.setViewName("redirect:createMode");
+//        } else {
+//            this.modeService.editMode(id, modeBindingModel);
+//            modelAndView.setViewName("redirect:/modes");
+//        }
+//
+//        return modelAndView;
+//    }
+//
+//    @GetMapping("/delete/{id}")
+//    //    @PreAuthorize("hasRole('ADMIN')")
+//    public ModelAndView deleteMode(@PathVariable Long id, ModelAndView modelAndView, Model model, ModelMapper modelMapper) {
+//        ModeServiceModel modeById = this.modeService.getById(id);
+//
+//        modelAndView.setViewName("createMode");
+//
+//        model.addAttribute("modeInput", modelMapper.map(modeById, ModeBindingModel.class));
+//
+//        ModeViewModel viewModel = new ModeViewModel();
+//        viewModel.setId(modeById.getId());
+//
+//        modelAndView.addObject("modeViewModel", viewModel);
+//
+//        return modelAndView;
+//    }
+//
+//    @PostMapping("/delete/{id}")
+//    //    @PreAuthorize("hasRole('ADMIN')")
+//    public ModelAndView deleteConfirm(@PathVariable Long id, ModelAndView modelAndView) {
+//        this.modeService.deleteMode(id);
+//
+//        modelAndView.setViewName("redirect:/modes");
+//
+//        return modelAndView;
+//    }
 }

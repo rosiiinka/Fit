@@ -16,7 +16,7 @@ public interface ModeService {
     ModeServiceModel getById(Long id);
 
 
-    void deleteMode(Long id);
-
-    void editMode(Long id, ModeBindingModel mode);
+//    void deleteMode(Long id);
+//
+//    void editMode(Long id, ModeBindingModel mode);
 }
